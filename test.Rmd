@@ -1,0 +1,22 @@
+---
+title: "Assignment1"
+output: html_document
+---
+Loading the raw file from the dataset
+```{r echo=TRUE}
+rawdata <- read.csv("~/Courses//Coursera//RResearch//a1//data//activity.csv")
+summary(rawdata)
+head(rawdata)
+```
+
+Making a histogram for all the steps taken each day
+```{r}
+library(plyr)
+totalSumSteps <- aggregate(.~date,data=rawdata,sum)
+summary(totalSumSteps)
+head(totalSumSteps)
+hist(totalSumSteps$steps,
+     main=paste("Histogram of Total Steps per day"),
+     xlab="Total Steps",
+     ylab="Frequency")
+```
